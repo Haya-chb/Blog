@@ -1,16 +1,14 @@
 <?php
-include("../connexion.php")
+include("connexion.php");
 
 function seletionUtilisateur ($db){
     $stmt = $db->prepare('SELECT * FROM utilisateurs');
     $stmt->execute();
 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
 }
 
 
-function supprimeUtilisateur($db $id_utilisateur){
+function supprimeUtilisateur($db, $id_utilisateur){
 
     $stmt = $db->prepare('DELETE FROM utilisateurs WHERE id_utilisateur = :id');
     $stmt->bindParam(':id', $id_utilisateur, PDO::PARAM_INT);
@@ -24,7 +22,7 @@ function verifieLogin ($db, $login) {
     $existe = $check->fetch(PDO::FETCH_ASSOC);
     }
 
-function inscription ($db, $login $hash, $image) {
+function inscription ($db, $login, $hash, $image) {
     $stmt = $db->prepare('INSERT INTO utilisateurs (login, password, proprietaire, photo) VALUES (:login, :password, 0, :photo)');
     $stmt->bindParam(':login', $login, PDO::PARAM_STR);
     $stmt->bindParam(':password', $hash, PDO::PARAM_STR);

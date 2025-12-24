@@ -1,7 +1,6 @@
 <?php
 session_start();
-include('connexion.php');
-include('../controleur/c-utilisateur.php');
+include('controleur/c-utilisateurs.php');
 
 
 ?>

@@ -1,26 +1,7 @@
 <?php
 
 
-include("../modele/m-utilisateur.php");
-include("../connexion.php");
-
-$utilisateur = seletionUtilisateur ($db);
-
-
-if (isset($_POST['verification'])) {
-
-    if (isset($_POST['id_utilisateur'])) {
-
-        if ($_POST['verification'] === 'oui') {
-            $id_utilisateur = intval($_POST['id_utilisateur']);
-            suuprimeUtilisateur($db, $id_utilisateur)
-            header('Location: admin.php?admin=Utilisateurs');
-            exit;
-        } else {
-            header('Location: admin.php?admin=Utilisateurs');
-            exit;
-        }
-    }}
+include("modele/m-utilisateurs.php");
 
 
     if (isset($_POST['valider_inscription'])) {
@@ -42,7 +23,7 @@ if (isset($_POST['verification'])) {
         if ($existe) {
             echo '<p> Ce login est déja prit.</p>';
         } else {
-            inscription($db, $login $hash, $image);
+            inscription($db, $login, $hash, $image);
             echo '<p> Inscription réussie. Vous pouvez vous connecter.</p>';
         }
     }
@@ -64,6 +45,6 @@ if (isset($_POST['verification'])) {
             }
         }
 
-$limite =limiteBillet ($db)
+$limite = limiteBillet ($db);
     
 ?>
