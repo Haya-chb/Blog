@@ -1,5 +1,5 @@
 <?php
-include('connexion.php');
+
 include('../controleur/c-billet.php');
 include('../controleur/c-utilisateurs.php');
 include('../controleur/c-commentaire.php');
@@ -21,7 +21,7 @@ session_start();
 </form>
 <br>
 <nav>
-    <a href="index.php">Acceuil</a>
+    <a href="../index.php">Acceuil</a>
     <a href="archives.php">Archives</a>
     <a href="admin.php">Administrateur</a>
 </nav>
@@ -175,7 +175,7 @@ if (isset($_GET['supprimer'])) {
 }
 
 
- if ($modif) {
+ if ($modif && $article) {
             echo '<form action="../controleur/c-billet.php" method="post">';
             echo '<input type="hidden" name="id_billet" value="'.$article['id_billet'].'">';
             echo '<input type="hidden" name="admin" value="Articles">';

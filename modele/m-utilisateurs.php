@@ -1,5 +1,5 @@
 <?php
-include("connexion.php");
+include("../connexion.php");
 
 function seletionUtilisateur ($db){
     $stmt = $db->prepare('SELECT * FROM utilisateurs');
@@ -19,7 +19,7 @@ function verifieLogin ($db, $login) {
     $check = $db->prepare('SELECT login FROM utilisateurs WHERE login = :login LIMIT 1');
     $check->bindParam(':login', $login, PDO::PARAM_STR);
     $check->execute();
-    $existe = $check->fetch(PDO::FETCH_ASSOC);
+    $check->fetch(PDO::FETCH_ASSOC);
     }
 
 function inscription ($db, $login, $hash, $image) {
@@ -34,7 +34,7 @@ function utilisateurExiste ($db, $login) {
     $stmt = $db->prepare('SELECT id_utilisateur, login, password, proprietaire FROM utilisateurs WHERE login = :login');
     $stmt->bindParam(':login', $login, PDO::PARAM_STR);
     $stmt->execute();
-    $utilisateurExiste = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function limiteBillet ($db){

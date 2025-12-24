@@ -23,7 +23,7 @@ include ('../controleur/c-billet.php');
 
 echo'<nav>';
 
-echo'<a href="index.php">Acceuil</a>';
+echo'<a href="../index.php">Acceuil</a>';
 echo'<a href="archives.php">Archives</a>';
 
 if (isset($_SESSION['id_utilisateur']) && !empty($_SESSION['proprietaire']) && $_SESSION['proprietaire'] == 1) {

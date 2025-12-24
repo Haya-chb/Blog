@@ -1,8 +1,9 @@
 <?php
-include("connexion.php");
-include("../controle/c-billet.php");
-include("../controle/c-commentaire.php")
 session_start();
+include("../connexion.php");
+include("../controleur/c-billet.php");
+include("../controleur/c-commentaire.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +15,21 @@ session_start();
 </head>
 <body>
     
-<nav>
-    <a href="index.php">Acceuil</a>
-    <a href="archives.php">Archives</a>
-    <a href="admin.php">Administrateur</a>
-</nav>
+
 
 <?php
+
+
+echo'<nav>';
+
+echo'<a href="../index.php">Acceuil</a>';
+echo'<a href="archives.php">Archives</a>';
+
+if (isset($_SESSION['id_utilisateur']) && !empty($_SESSION['proprietaire']) && $_SESSION['proprietaire'] == 1) {
+echo'<a href="admin.php">Administrateur</a>';
+}
+
+echo'</nav>';
 
 
     if ($article) {

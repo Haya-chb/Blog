@@ -1,8 +1,26 @@
 <?php
 
 
-include("modele/m-utilisateurs.php");
+include("../modele/m-utilisateurs.php");
 
+
+$utilisateur = seletionUtilisateur ($db);
+
+
+if (isset($_POST['verification'])) {
+
+    if (isset($_POST['id_utilisateur'])) {
+
+        if ($_POST['verification'] === 'oui') {
+            $id_utilisateur = intval($_POST['id_utilisateur']);
+            suuprimeUtilisateur($db, $id_utilisateur);
+            header('Location: admin.php?admin=Utilisateurs');
+            exit;
+        } else {
+            header('Location: admin.php?admin=Utilisateurs');
+            exit;
+        }
+    }}
 
     if (isset($_POST['valider_inscription'])) {
 
@@ -18,7 +36,7 @@ include("modele/m-utilisateurs.php");
             $image = 'photo-profil/' . $name;
         }
     
-        verifieLogin($db, $login);
+        $existe = verifieLogin($db, $login);
 
         if ($existe) {
             echo '<p> Ce login est déja prit.</p>';
@@ -31,14 +49,15 @@ include("modele/m-utilisateurs.php");
     if (isset($_POST['valider_connexion'])) {
         $login = trim($_POST['login']);
         $mdp = $_POST['pswd']; 
-        utilisateurExiste($db, $login);
+        $utilisateur = utilisateurExiste($db, $login);
             
-    if ($utilisateurExiste && password_verify($mdp, $utilisateur['password'])) {
+    if ($utilisateur && password_verify($mdp, $utilisateur['password'])) {
                 
         $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur'];
         $_SESSION['proprietaire']=$utilisateur['proprietaire'];
         $_SESSION['login'] = $utilisateur['login'];
-        header('Location: ../index.php');
+        header('Location: index.php');
+        exit;
                 
         } else {
         echo '<p>Login ou mot de passe incorrect.</p>';

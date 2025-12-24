@@ -3,16 +3,7 @@
 include("../connexion.php");
 
 
-function commentaireByid_billet ($db, $id){
-$stmt = $db->prepare("SELECT * FROM commentaire 
-                        JOIN utilisateurs ON commentaire.id_utilisateur = utilisateurs.id_utilisateur 
-                        WHERE id_billet = :id 
-                        ORDER BY date_commentaire DESC");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-}
 
 function ajoutCommentaire ($db, $id_utilisateur, $id, $contenu){
 

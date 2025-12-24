@@ -18,6 +18,17 @@ function idBillet($db, $id) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+function commentaireByid_billet ($db, $id){
+$stmt = $db->prepare("SELECT * FROM commentaire 
+                        JOIN utilisateurs ON commentaire.id_utilisateur = utilisateurs.id_utilisateur 
+                        WHERE id_billet = :id 
+                        ORDER BY date_commentaire DESC");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+}
+
 function supprimeBillet($db, $id_billet){
 
     $stmt = $db->prepare('DELETE FROM billet WHERE id_billet = :id');
@@ -41,13 +52,13 @@ function nouveauBillet($db,$titre,$date,$contenu) {
     $stmt->execute();
 }
 
-function verifierBillet ($db,$id_billet);
+function verifierBillet ($db,$id_billet){
 $stmt = $db->prepare('SELECT * FROM billet WHERE id_billet = :id');
         $stmt->bindParam(':id', $id_billet, PDO::PARAM_INT);
         $stmt->execute();
-        $modif = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
 
-
+}
 
 
 ?>
