@@ -140,7 +140,7 @@ if (isset($_GET['supprimer'])) {
     if ($_GET['supprimer'] === 'Supprimer utilisateur' && isset($_GET['id_utilisateur'])) {
         $id_utilisateur = intval($_GET['id_utilisateur']);
 
-        echo'<form action="../controleur/c-utilisateur.php" method="post">';
+        echo'<form action="../controleur/c-utilisateurs.php" method="post">';
         echo '<input type="hidden" name="id_utilisateur" value="'.$id_utilisateur.'">';
         echo '<input type="hidden" name="admin" value="Utilisateurs">';
         echo'<label>Êtes-vous sûr de vouloir supprimer cet utilisateur ?</label>';

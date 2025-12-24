@@ -82,7 +82,7 @@ echo'</nav>';
 
 foreach ($limite as $row) {
     echo '<br><br>';
-    echo '<a href="article.php?id=' . $row["id_billet"] . '"><strong>' . $row["titre"] . '</strong></a><br>';
+    echo '<a href="vue/article.php?id=' . $row["id_billet"] . '"><strong>' . $row["titre"] . '</strong></a><br>';
     echo $row["date"] . '<br>';
     
 }

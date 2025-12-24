@@ -1,5 +1,6 @@
 <?php
-include("../connexion.php");
+require_once __DIR__ . '/../connexion.php';
+
 
 function seletionUtilisateur ($db){
     $stmt = $db->prepare('SELECT * FROM utilisateurs');

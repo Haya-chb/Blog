@@ -1,7 +1,7 @@
 <?php
 
 
-include("../modele/m-utilisateurs.php");
+require_once __DIR__ . '/../modele/m-utilisateurs.php';
 
 
 $utilisateur = seletionUtilisateur ($db);
@@ -13,11 +13,11 @@ if (isset($_POST['verification'])) {
 
         if ($_POST['verification'] === 'oui') {
             $id_utilisateur = intval($_POST['id_utilisateur']);
-            suuprimeUtilisateur($db, $id_utilisateur);
-            header('Location: admin.php?admin=Utilisateurs');
+            supprimeUtilisateur($db, $id_utilisateur);
+            header('Location: ../vue/admin.php?admin=Utilisateurs');
             exit;
         } else {
-            header('Location: admin.php?admin=Utilisateurs');
+            header('Location: ../vue/admin.php?admin=Utilisateurs');
             exit;
         }
     }}
@@ -65,5 +65,7 @@ if (isset($_POST['verification'])) {
         }
 
 $limite = limiteBillet ($db);
+
+
     
 ?>
