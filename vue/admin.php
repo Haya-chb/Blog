@@ -12,21 +12,24 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin-style.css">
     <title>Administrateur</title>
 </head>
 <body>
 
-<form action="deconnexion.php" method="post">
-<input type="submit" value="Déconnexion">
-</form>
-<br>
+
+
 <nav>
     <a href="../index.php">Acceuil</a>
     <a href="archives.php">Archives</a>
-    <a href="admin.php">Administrateur</a>
-</nav>
-    <br>
+    <a href="admin.php?admin=Articles">Administrateur</a>
 
+   
+<form action="../deconnexion.php" method="post">
+<input type="submit" value="Déconnexion">
+</form>
+
+</nav>
 
 <form action="admin.php" method="get">
     <input type="submit" value="Articles" name="admin">
@@ -35,6 +38,7 @@ session_start();
     <input type="submit" value="Poster un article" name="admin">
 </form>
 
+ <main>
 <?php
 
 if (isset($_GET['admin'])){
@@ -191,5 +195,6 @@ if (isset($_GET['supprimer'])) {
 
 
 ?>
+</main>
 </body>
 </html>

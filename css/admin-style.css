@@ -1,0 +1,50 @@
+body{
+margin: 0%;
+background-color: #E2E1E1;
+border: #1605F8 solid 3px;}
+
+
+main{
+    background-color: #f8f8f8;
+    max-width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    height: 100%;
+   padding: 10px;
+}
+
+
+nav{
+background-color: #1605F8 ;
+padding: 10px;
+display: flex;
+align-items: center;
+
+}
+
+
+nav a {text-decoration: none;
+color:#f8f8f8;
+padding: 5px;}
+
+nav a:hover, nav input:hover{
+    text-decoration: underline white;
+    
+}
+
+nav form{
+margin-left: auto;
+}
+nav input  {
+    background-color:#1605F8;
+    color: #f8f8f8;
+    
+    
+}
+
+
+
+input{ 
+    border: none;
+}
+
